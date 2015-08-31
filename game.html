@@ -1,0 +1,39 @@
+<html>
+	<body>
+		<script>
+			function guess() {
+				alert("guess a number inside 100");
+				bin(0, 100, 1);
+			}
+			guess();
+			
+			function bin(low, high, count) {
+				if(low == high) {
+					alert('you guessed '+low);
+					return;
+				}
+				while(low < high) {
+					var mid = Math.round((high+low)/2);
+					var flag = false;
+					flag = confirm(count+" number greater than "+mid);
+					if(flag) {
+						low = mid+1;
+						bin(low, high, ++count);
+						break;
+					}
+					else {
+						flag = confirm(count+" number lesser than "+mid);
+						if(flag) {
+							high = mid - 1;
+							bin(low, high, ++count);
+							break;
+						} else {
+							alert('you guessed '+mid);
+							return;
+						}
+					} 
+				} 
+			}
+		</script>
+	</body>
+</html>
